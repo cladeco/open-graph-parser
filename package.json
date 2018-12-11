@@ -1,0 +1,24 @@
+{
+  "name": "@cladeco/open-graph-parser",
+  "version": "0.0.1",
+  "description": "A utility to extract Open Graph data from a URL.",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/cladeco/open-graph-parser"
+  },
+  "keywords": [
+    "open",
+    "graph",
+    "parser",
+    "scraper"
+  ],
+  "author": "Douglas Nomizo",
+  "dependencies": {
+    "html-entities": "^1.2.1"
+  }
+}
