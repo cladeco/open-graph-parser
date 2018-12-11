@@ -1,11 +1,13 @@
 {
   "name": "@cladeco/open-graph-parser",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A utility to extract Open Graph data from a URL.",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "build": "yarn babel src --out-dir dist",
+    "prepublish": "yarn build"
   },
   "repository": {
     "type": "git",
@@ -14,11 +16,13 @@
   "keywords": [
     "open",
     "graph",
-    "parser",
-    "scraper"
+    "parser"
   ],
   "author": "Douglas Nomizo",
   "dependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
     "html-entities": "^1.2.1"
   }
 }
