@@ -1,8 +1,8 @@
 {
   "name": "@cladeco/open-graph-parser",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A utility to extract Open Graph data from a URL.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",
