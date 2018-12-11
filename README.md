@@ -1,4 +1,4 @@
-# open-graph-parser [![CircleCI](https://circleci.com/gh/cladeco/open-graph-parser.svg?style=shield&circle-token=0109c22092b2aae080e849d7d80c831d143640c9)](https://circleci.com/gh/cladeco/open-graph-parser)
+# open-graph-parser [![CircleCI](https://circleci.com/gh/cladeco/open-graph-parser.svg?style=shield&circle-token=b37ac9febd540869e72c485d864605dcbaf2b820)](https://circleci.com/gh/cladeco/open-graph-parser)
 
 A utility to extract Open Graph data from a URL.
 
