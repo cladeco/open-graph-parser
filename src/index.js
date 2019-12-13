@@ -38,12 +38,10 @@ function findOGTags(content, url) {
           continue
         }
       } catch (error) {
-        if (__DEV__) {
-          console.log('Error on ', matches[i])
-          console.log('propertyMatch', propertyMatch)
-          console.log('contentMatch', contentMatch)
-          console.log(error)
-        }
+        console.log('Error on ', matches[i])
+        console.log('propertyMatch', propertyMatch)
+        console.log('contentMatch', contentMatch)
+        console.log(error)
 
         continue
       }
@@ -106,12 +104,10 @@ function findHTMLMetaTags(content, url) {
           continue
         }
       } catch (error) {
-        if (__DEV__) {
-          console.log('Error on ', matches[i])
-          console.log('propertyMatch', propertyMatch)
-          console.log('contentMatch', contentMatch)
-          console.log(error)
-        }
+        console.log('Error on ', matches[i])
+        console.log('propertyMatch', propertyMatch)
+        console.log('contentMatch', contentMatch)
+        console.log(error)
 
         continue
       }
@@ -163,9 +159,7 @@ function parseMeta(html, url, options) {
         ...meta,
       }
     } catch (error) {
-      if (__DEV__) {
-        console.log('Error in fallback', error)
-      }
+      console.log('Error in fallback', error)
     }
   }
 
@@ -179,7 +173,8 @@ async function fetchHtml(urlToFetch, forceGoogle = false) {
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
 
   if (forceGoogle) {
-    userAgent = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+    userAgent =
+      'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
   }
 
   try {
@@ -196,7 +191,7 @@ async function fetchHtml(urlToFetch, forceGoogle = false) {
 
     return result.text().then(resultParsed => resultParsed)
   } catch (responseOrError) {
-    if (responseOrError.message && __DEV__) {
+    if (responseOrError.message) {
       if (responseOrError.message === 'Network request failed') {
         console.log(urlToFetch, 'could not be fetched')
       } else {
@@ -206,9 +201,7 @@ async function fetchHtml(urlToFetch, forceGoogle = false) {
     }
 
     return responseOrError.text().then(error => {
-      if (__DEV__) {
-        console.log('An error has occured while fetching url content', error)
-      }
+      console.log('An error has occured while fetching url content', error)
       return null
     })
   }
@@ -230,9 +223,7 @@ async function fetchJSON(urlToFetch, urlOfVideo) {
       url: urlOfVideo,
     }
   } catch (error) {
-    if (__DEV__) {
-      console.log(error)
-    }
+    console.log(error)
     return null
   }
 }
@@ -251,15 +242,16 @@ function getUrls(contentToMatch) {
       }
     })
   } else {
-    if (__DEV__) {
-      console.log('Could not find an html link')
-    }
+    console.log('Could not find an html link')
   }
 
   return urlsToReturn
 }
 
-async function extractMeta(textContent = '', options = { fallbackOnHTMLTags: true }) {
+async function extractMeta(
+  textContent = '',
+  options = { fallbackOnHTMLTags: true },
+) {
   try {
     const urls = getUrls(textContent)
 
@@ -269,7 +261,10 @@ async function extractMeta(textContent = '', options = { fallbackOnHTMLTags: tru
     while (i < urls.length) {
       if (urls[i].indexOf('youtube.com') >= 0) {
         metaData.push(
-          await fetchJSON(`https://www.youtube.com/oembed?url=${urls[i]}&format=json`, urls[i]),
+          await fetchJSON(
+            `https://www.youtube.com/oembed?url=${urls[i]}&format=json`,
+            urls[i],
+          ),
         )
       } else {
         /* eslint-disable no-loop-func */
